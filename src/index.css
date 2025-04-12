@@ -1,0 +1,87 @@
+:root {
+  --background-dark: #0a0a0a;
+  --background-darker: #0f0f0f;
+  --accent-green: #00ff66;
+  --accent-dark-green: #003311;
+  --accent-red: #ff1a1a;
+  --accent-dark-red: #330000;
+  --neutral-gray: #444444;
+  --neutral-light-gray: #777777;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Courier Prime", monospace;
+  background-color: var(--background-dark);
+  color: var(--neutral-light-gray);
+  min-height: 100vh;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--neutral-gray);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-green);
+}
+
+/* Subtle noise texture */
+.app-container::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0.02;
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAABCRJREFUaEPtmttx2zAQRQ8zStLEdCVxJ3YncSdRJ3E6USeOK4krsTtxOkk6ieiMdoQBCIBcgAQlMx7OZPRDEbgL7N7dBXDnYHeO4/8DJCLfiEj/PkXkz5zzr1bPdXMiIvJeRD6KyIuG4f4TkR8556etIG4KEhF99Pca4yw4f+acjzVzl8bcBCQi30Xkc+NBfxaRbZuJyL6G3QrkH4jIs+5hVXvOed/A8aYhdwniEBHU5ImIPKwBnQsiIjoXm9yLqrwXkWcR0WscFgBHEXm1dP2I7Jpz3q1BzQF5JyJqSA+zwJxBnIhPOefDwqQ3heluE5GfOeeXUzBTMLp6ahP7WpDIVKjdYdLN6usi8t3tYrKHEcgBaVbbw9w+Fqkttj7V5M7l6Tpp70DfKgfzRmJsiFn/tWm5RjYRmVNbDdl7BVirvBvZCiZMxR+Hc9Yx2Lhbf7MTIbxQZ6yyAjNqNQRRe9BF03gqcOA2OV0LmLE9CENbIOrOiMh+yvv5GDO9TFBFG1XbgtiLYxt2CUQXcM3C5AaGIPZCc4ELOzm3SdCNiLwyNiTSKZiPKeXiGGNj0I2xWTscizDe00xA3A7Gnrz6CZVYeNZUhhCRVAaQ86S1iiTitLYLk9V8RgQVcSryl4C44k89mHPi1KXrxaGthgbXWZq7EhAA/ILqKtvKQfzKOb8YcrmCm9TUZmLu0lxsbwpi2jLbHGYA0a0vURfb24WlPcRYxnBzm4JEB9bmMfMuI0dxNhfIzR7G2cgQxJ5yTVopF1UkJ8Dlb4i9Y85Z6z7DuASxD8TeGqoR1cfS4gUMRoG9HCzVgUsQvXHLhXNMqVoUmBPIKRMfm7sU/mMQvWnrcLcAGXMiS1nbIAeKUx6D2JuvcdRbg4y58qW6sQeyB4pBdFZ7w20FwrGZNgp64FjxRiCR6rSk1Q0sHgc5wdYgUfTa59gSRI8OHkEObMdnl6UNMchSF4ptdA1MBBLlb7E7b3G37Kq1gC2NiUCifC1ylGvOGpUeWpRDgiE3u0T1X9TNr53HYJBonZAE149p2S3YaqzbEJT/hZrZCiRqUwgXz/5iKw+iG+P+oNYusRVIuPVRu39LmA7EwJR6XoIgUS8wqgfXwnQgmJzWdQtUqKV3WwNTHCwqAFFDwKF+bwKC2kQZwrU2QV+PG2bpK7SoZ7AJSJQuXKsivuuH7YQgUWd9S5BokaNOY6UasmHdm4BEIMGWF4GEdnINSNRjjEoBC20NQKL8jmJ0Acj54W9U2EOF3LXDzYGoO0dVYmuTC5AwpIZBT5OfQjDNQDQVwPC6nnSr/cQvpbTuqMOwrtcY2cgwvLYCmbKVSvtjYJDzOw/R24+B1tpK1JvsNu76XxuuBWmZuzXIf699qzEi4ShjAAAAAElFTkSuQmCC");
+}
+
+/* Flicker animation for terminal effect */
+@keyframes textFlicker {
+  0% {
+    opacity: 1;
+  }
+  98% {
+    opacity: 1;
+  }
+  99% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.terminal-flicker {
+  animation: textFlicker 3s infinite alternate;
+}
+
+/* Animation for the scan effect */
+@keyframes scan {
+  0% {
+    left: -50%;
+  }
+  100% {
+    left: 100%;
+  }
+}
