@@ -23,6 +23,8 @@ const BluffPanel = () => {
   const useBluffToken = useGameStore((state) => state.useBluffToken);
   const currentTurn = useGameStore((state) => state.currentTurn);
 
+  const [targetedCategory, setTargetedCategory] = useState("");
+
   // Toast for notifications
   const toast = useToast();
 
@@ -58,6 +60,34 @@ const BluffPanel = () => {
       toast({
         title: "Failed to use bluff token",
         description: result.message,
+        status: "error",
+        duration: 3000,
+        isClosable: true,
+        position: "top",
+      });
+    }
+  };
+
+  // Handle using a targeted bluff token
+  const handleUseTargetedBluff = () => {
+    if (targetedCategory) {
+      const result = useTargetedBluff(targetedCategory);
+
+      if (result.success) {
+        toast({
+          title: "Targeted counter-intelligence deployed",
+          description: `You can now mislead your opponent about ${targetedCategory} information.`,
+          status: "success",
+          duration: 3000,
+          isClosable: true,
+          position: "top",
+        });
+      }
+    } else {
+      toast({
+        title: "Select a category",
+        description:
+          "Please select a category to target with your counter-intelligence operation.",
         status: "error",
         duration: 3000,
         isClosable: true,
@@ -132,6 +162,34 @@ const BluffPanel = () => {
             <Text>No bluff tokens remaining</Text>
           </HStack>
         )}
+
+        <Select
+          placeholder="Select category to target"
+          value={targetedCategory}
+          onChange={(e) => setTargetedCategory(e.target.value)}
+          disabled={playerBluffTokens <= 0 || currentTurn === "player"}
+        >
+          {categories.map((category) => (
+            <option key={category} value={category}>
+              {category}
+            </option>
+          ))}
+        </Select>
+
+        <Button
+          leftIcon={<Shield size={18} />}
+          colorScheme="red"
+          size="sm"
+          onClick={handleUseTargetedBluff}
+          isDisabled={
+            !targetedCategory ||
+            playerBluffTokens <= 0 ||
+            currentTurn === "player"
+          }
+          variant="outline"
+        >
+          Use Targeted Counter-Intelligence
+        </Button>
       </VStack>
     </MotionBox>
   );

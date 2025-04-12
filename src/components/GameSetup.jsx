@@ -14,7 +14,7 @@ import { motion } from "framer-motion";
 import { useGameStore } from "../stores/gameStore";
 
 // Wrap components with motion
-const MotionBox = motion(Box);
+const MotionBox = motion.create(Box);
 
 const GameSetup = ({ onStartGame }) => {
   // Game setup state
@@ -156,6 +156,31 @@ const GameSetup = ({ onStartGame }) => {
             </RadioGroup>
           </Box>
         )}
+
+        <Box>
+          <Heading as="h3" size="sm" mb={3} color="neutral.lightGray">
+            Select Your Specialization
+          </Heading>
+          <RadioGroup onChange={setSpecialization} value={specialization}>
+            <Stack direction="column" spacing={3}>
+              <Radio value="fieldAgent">
+                <Text>
+                  Field Agent - Reveals location information more effectively
+                </Text>
+              </Radio>
+              <Radio value="profiler">
+                <Text>
+                  Profiler - Better at analyzing appearance and habits
+                </Text>
+              </Radio>
+              <Radio value="networkAnalyst">
+                <Text>
+                  Network Analyst - More effective at uncovering contacts
+                </Text>
+              </Radio>
+            </Stack>
+          </RadioGroup>
+        </Box>
 
         <HStack justify="center" mt={4}>
           <Button

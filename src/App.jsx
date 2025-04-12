@@ -9,7 +9,7 @@ import { useGameStore } from "./stores/gameStore";
 import { useAIStore } from "./stores/aiStore";
 
 // Wrap components with motion
-const MotionBox = motion(Box);
+const MotionBox = motion.create(Box);
 
 function App() {
   // Get game state

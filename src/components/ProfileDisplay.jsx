@@ -13,7 +13,7 @@ import { motion } from "framer-motion";
 import { useGameStore } from "../stores/gameStore";
 
 // Wrap with motion
-const MotionBox = motion(Box);
+const MotionBox = motion.create(Box);
 
 const ProfileDisplay = () => {
   // Get player's known attributes from store

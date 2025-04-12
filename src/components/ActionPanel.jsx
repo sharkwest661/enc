@@ -295,6 +295,14 @@ const ActionPanel = () => {
             cost={3}
             disabled={currentTurn !== "player"}
           />
+          <ActionButton
+            isActive={actionType === "deepInvestigation"}
+            onClick={() => handleActionTypeChange("deepInvestigation")}
+            icon={<NetworkDeep size={18} />}
+            label="Deep Investigation"
+            cost={3}
+            disabled={currentTurn !== "player"}
+          />
         </HStack>
 
         <AnimatePresence mode="wait">
